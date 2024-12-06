@@ -1,0 +1,43 @@
+[gd_scene load_steps=2 format=3 uid="uid://ddk6y8aswsgt5"]
+
+[ext_resource type="Script" path="res://scripts/main_manu.gd" id="1_2e352"]
+
+[node name="Main" type="Node2D"]
+
+[node name="MainManu" type="CanvasLayer" parent="."]
+script = ExtResource("1_2e352")
+
+[node name="StartGameBut" type="Button" parent="MainManu"]
+anchors_preset = -1
+anchor_left = 0.52
+anchor_top = 0.5
+anchor_right = 0.571215
+anchor_bottom = 0.507716
+offset_left = -549.04
+offset_top = 126.0
+offset_right = -503.04
+offset_bottom = 157.0
+tooltip_text = "Начать игру"
+text = "Start"
+
+[node name="AboutBut" type="Button" parent="MainManu"]
+anchors_preset = -1
+anchor_left = 0.516
+anchor_top = 0.5
+anchor_right = 0.516
+anchor_bottom = 0.5
+offset_left = -544.432
+offset_top = 181.0
+offset_right = -439.432
+offset_bottom = 217.0
+text = "About"
+
+[node name="ExitBut" type="Button" parent="MainManu"]
+offset_left = 50.0
+offset_top = 561.0
+offset_right = 155.0
+offset_bottom = 598.0
+text = "Exit"
+
+[connection signal="pressed" from="MainManu/StartGameBut" to="MainManu" method="_on_start_game_but_pressed"]
+[connection signal="pressed" from="MainManu/ExitBut" to="MainManu" method="_on_exit_but_pressed"]
