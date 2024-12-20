@@ -1,15 +1,13 @@
-[gd_scene load_steps=17 format=3 uid="uid://cnacl40uwlbyu"]
+[gd_scene load_steps=15 format=3 uid="uid://cnacl40uwlbyu"]
 
 [ext_resource type="Texture2D" uid="uid://fmftmcwhanja" path="res://assests/Bg.png" id="1_lc0fl"]
 [ext_resource type="Script" path="res://scripts/game/main_game.gd" id="2_rgech"]
 [ext_resource type="Script" path="res://scripts/game/player/controller.gd" id="3_o8nqx"]
-[ext_resource type="Texture2D" uid="uid://byg8qkti03kwv" path="res://assests/simple_pong/arts/Board.png" id="3_tecxm"]
 [ext_resource type="Script" path="res://scripts/game/player/player.gd" id="4_t01jk"]
 [ext_resource type="Script" path="res://scripts/game/player/ai_controller.gd" id="5_40gfw"]
 [ext_resource type="Texture2D" uid="uid://buse88w3wgtf4" path="res://assests/simple_pong/arts/Player.png" id="5_gow32"]
 [ext_resource type="Script" path="res://scripts/game/ball/ball.gd" id="6_spbsn"]
 [ext_resource type="Texture2D" uid="uid://b0enywkid0su" path="res://assests/simple_pong/arts/Ball.png" id="7_1kryn"]
-[ext_resource type="Texture2D" uid="uid://bdv0r4j1wup5l" path="res://assests/simple_pong/arts/Computer.png" id="7_s1kqy"]
 [ext_resource type="PackedScene" uid="uid://igftnsoo225g" path="res://scenes/ball_timer.tscn" id="7_xbmjn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ynied"]
@@ -32,46 +30,41 @@ position = Vector2(577, 324)
 texture = ExtResource("1_lc0fl")
 script = ExtResource("2_rgech")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(2.2137, 2.2137)
-texture = ExtResource("3_tecxm")
-
 [node name="Player1Controller" type="Node2D" parent="."]
 script = ExtResource("3_o8nqx")
 
 [node name="Player" type="CharacterBody2D" parent="Player1Controller"]
 position = Vector2(-510, 0)
-collision_layer = 3
+collision_mask = 0
 script = ExtResource("4_t01jk")
 
 [node name="Colision" type="CollisionShape2D" parent="Player1Controller/Player"]
 shape = SubResource("RectangleShape2D_ynied")
 
 [node name="Sprite2D" type="Sprite2D" parent="Player1Controller/Player"]
-scale = Vector2(-1, -1)
 texture = ExtResource("5_gow32")
 
 [node name="Player2Controller" type="Node2D" parent="."]
 script = ExtResource("5_40gfw")
 
 [node name="Player" type="CharacterBody2D" parent="Player2Controller"]
-position = Vector2(510, 0)
-collision_layer = 3
+position = Vector2(520, -60)
+collision_mask = 0
 script = ExtResource("4_t01jk")
 
-[node name="Colision" type="CollisionShape2D" parent="Player2Controller/Player"]
-shape = SubResource("RectangleShape2D_ynied")
+[node name="ColorRect" type="ColorRect" parent="Player2Controller/Player"]
+offset_right = 20.0
+offset_bottom = 120.0
+metadata/_edit_use_anchors_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="Player2Controller/Player"]
-position = Vector2(-2, 5)
-scale = Vector2(-1, 1)
-texture = ExtResource("7_s1kqy")
+[node name="Colision" type="CollisionShape2D" parent="Player2Controller/Player"]
+position = Vector2(10, 60)
+shape = SubResource("RectangleShape2D_ynied")
 
 [node name="BallController" type="Node2D" parent="."]
 
 [node name="Ball" type="CharacterBody2D" parent="BallController"]
-collision_layer = 6
-collision_mask = 7
+collision_mask = 3
 script = ExtResource("6_spbsn")
 
 [node name="BallColisiton" type="CollisionShape2D" parent="BallController/Ball"]
@@ -81,7 +74,7 @@ shape = SubResource("CircleShape2D_o0kdd")
 texture = ExtResource("7_1kryn")
 
 [node name="Borders" type="StaticBody2D" parent="."]
-collision_layer = 3
+collision_layer = 2
 
 [node name="Top" type="CollisionShape2D" parent="Borders"]
 position = Vector2(0, -334)
@@ -93,8 +86,6 @@ shape = SubResource("RectangleShape2D_emvog")
 
 [node name="ScoreLeft" type="Area2D" parent="."]
 position = Vector2(-576, -324)
-collision_layer = 4
-collision_mask = 4
 
 [node name="ScoreLeftColision" type="CollisionShape2D" parent="ScoreLeft"]
 position = Vector2(-10, 324.25)
@@ -102,8 +93,6 @@ shape = SubResource("RectangleShape2D_rw4ml")
 
 [node name="ScoreRight" type="Area2D" parent="."]
 position = Vector2(-576, -324)
-collision_layer = 4
-collision_mask = 4
 
 [node name="ScoreRightColision" type="CollisionShape2D" parent="ScoreRight"]
 position = Vector2(1162, 324)
@@ -112,20 +101,20 @@ shape = SubResource("RectangleShape2D_rw4ml")
 [node name="Hud" type="CanvasLayer" parent="."]
 
 [node name="Player1Score" type="Label" parent="Hud"]
-offset_left = 535.0
-offset_top = 1.0
-offset_right = 575.0
-offset_bottom = 45.0
+offset_left = 524.0
+offset_top = 9.0
+offset_right = 564.0
+offset_bottom = 32.0
 text = "0
 "
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Player2Score" type="Label" parent="Hud"]
-offset_left = 579.0
-offset_top = 2.0
-offset_right = 619.0
-offset_bottom = 46.0
+offset_left = 591.0
+offset_top = 9.0
+offset_right = 631.0
+offset_bottom = 32.0
 text = "0
 "
 horizontal_alignment = 1

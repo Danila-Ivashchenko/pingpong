@@ -28,7 +28,7 @@ func _ai_process(delta: float):
 	
 	var pred_y = ball_y + t * ball_speed * ball_dir
 	
-	var player_y = player.position.y + player.p_height / 2
+	var player_y = player.position.y
 	var dir = 0
 	
 	var win_heigth = get_viewport().size.y
@@ -60,8 +60,8 @@ func _ai_process(delta: float):
 	var treshhold_position = randf_range(-player.p_height / 3, 0.0)
 	
 	if abs(player_y - pred_y) > player.p_height / 2 + treshhold_position:
-		print("ball position:", ball_y)
-		print("player position:", player_y)
+		#print("ball position:", ball_y)
+		#print("player position:", player_y)
 		
 		if player_y > pred_y :
 			dir = -1

@@ -1,0 +1,102 @@
+[gd_scene load_steps=3 format=3 uid="uid://cm27yht3beost"]
+
+[ext_resource type="Script" path="res://scripts/menu/main_manu.gd" id="1_bj7xq"]
+[ext_resource type="Texture2D" uid="uid://uojtcqgisa5v" path="res://assests/space_bg.jpg" id="2_rx75p"]
+
+[node name="MainManu" type="CanvasLayer" node_paths=PackedStringArray("score_label")]
+script = ExtResource("1_bj7xq")
+score_label = NodePath("VBoxContainer/VBoxContainer2/Node2D/Scorelabel")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(0.621524, 0.621524, 0.621524, 1)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_rx75p")
+expand_mode = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(140, 0)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -48.0
+offset_top = -94.5
+offset_right = 48.0
+offset_bottom = 94.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 48
+alignment = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Label" type="Label" parent="VBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "Max game score"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Node2D" type="HBoxContainer" parent="VBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="VBoxContainer/VBoxContainer2/Node2D"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment_horizontal = 0
+
+[node name="MaxScoreDown" type="Button" parent="VBoxContainer/VBoxContainer2/Node2D/AspectRatioContainer"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+text = "<"
+
+[node name="Scorelabel" type="Label" parent="VBoxContainer/VBoxContainer2/Node2D"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/shadow_outline_size = 0
+text = "5"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AspectRatioContainer2" type="AspectRatioContainer" parent="VBoxContainer/VBoxContainer2/Node2D"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment_horizontal = 2
+
+[node name="MaxScoreUp" type="Button" parent="VBoxContainer/VBoxContainer2/Node2D/AspectRatioContainer2"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+text = ">"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="StartGameBut" type="Button" parent="VBoxContainer/VBoxContainer"]
+layout_mode = 2
+tooltip_text = "Начать игру"
+text = "PvE"
+
+[node name="StartGameBut2" type="Button" parent="VBoxContainer/VBoxContainer"]
+layout_mode = 2
+tooltip_text = "Начать игру"
+text = "PvP"
+
+[node name="ExitBut" type="Button" parent="VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Exit"
+
+[connection signal="pressed" from="VBoxContainer/VBoxContainer2/Node2D/AspectRatioContainer/MaxScoreDown" to="." method="_on_max_score_down_pressed"]
+[connection signal="pressed" from="VBoxContainer/VBoxContainer2/Node2D/AspectRatioContainer2/MaxScoreUp" to="." method="_on_max_score_up_pressed"]
+[connection signal="pressed" from="VBoxContainer/VBoxContainer/StartGameBut" to="." method="_on_start_game_but_pressed"]
+[connection signal="pressed" from="VBoxContainer/VBoxContainer/StartGameBut2" to="." method="_on_start_pvp_game_but_pressed"]
+[connection signal="pressed" from="VBoxContainer/VBoxContainer/ExitBut" to="." method="_on_exit_but_pressed"]

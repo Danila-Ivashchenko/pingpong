@@ -1,0 +1,19 @@
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://cn1ygbdx6ovds"]
+
+[ext_resource type="FontFile" uid="uid://de7i2133gvxiq" path="res://assests/simple_pong/fonts/Teko-VariableFont_wght.ttf" id="1_aa8hg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kemos"]
+bg_color = Color(0.512382, 0.150685, 0.406376, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_divm8"]
+bg_color = Color(0.596078, 0.188235, 0.478431, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x4ksr"]
+bg_color = Color(0.324788, 0.0807961, 0.255347, 1)
+
+[resource]
+Button/styles/hover = SubResource("StyleBoxFlat_kemos")
+Button/styles/normal = SubResource("StyleBoxFlat_divm8")
+Button/styles/pressed = SubResource("StyleBoxFlat_x4ksr")
+Label/font_sizes/font_size = 30
+Label/fonts/font = ExtResource("1_aa8hg")
